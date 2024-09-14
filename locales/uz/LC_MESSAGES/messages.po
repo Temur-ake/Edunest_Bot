@@ -1,0 +1,148 @@
+# Uzbek translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-09-11 16:25+0500\n"
+"PO-Revision-Date: 2024-09-11 16:21+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: uz\n"
+"Language-Team: uz <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: keyboards.py:10
+msgid "✅ Malumot qoldirish!"
+msgstr ""
+
+#: keyboards.py:11
+msgid "🏢 Biz haqimizda"
+msgstr ""
+
+#: keyboards.py:12
+msgid "📞 Biz bilan bog'lanish"
+msgstr ""
+
+#: keyboards.py:13
+msgid "◀️ Yangilik"
+msgstr ""
+
+#: keyboards.py:14
+msgid "🇺🇿/🇷🇺/🇬🇧/ Tilni o'zgaritirish"
+msgstr ""
+
+#: keyboards.py:25
+msgid "Telefon raqamni yuborish"
+msgstr ""
+
+#: keyboards.py:35
+msgid "Ha ✅"
+msgstr ""
+
+#: keyboards.py:36
+msgid "Yo'q ❌"
+msgstr ""
+
+#: keyboards.py:48
+msgid "⬅️ Ortga"
+msgstr ""
+
+#: handlers/admin.py:18
+msgid "Reklama 🔊"
+msgstr ""
+
+#: handlers/contact.py:25
+msgid "🔉 Telegram kanalimiz"
+msgstr ""
+
+#: handlers/contact.py:26 handlers/contact.py:27
+msgid "📞 Telefon raqamimiz"
+msgstr ""
+
+#: handlers/contact.py:28
+msgid "✉️ Emailimiz"
+msgstr ""
+
+#: handlers/inform.py:14
+msgid "Ismingizni kiriting"
+msgstr ""
+
+#: handlers/inform.py:21
+msgid "Familiyangizni kiriting"
+msgstr ""
+
+#: handlers/inform.py:28
+msgid "Emailingizni kiriting"
+msgstr ""
+
+#: handlers/inform.py:35
+msgid "Telefon raqamingizni kiriting"
+msgstr ""
+
+#: handlers/inform.py:48
+msgid "Ism"
+msgstr ""
+
+#: handlers/inform.py:49
+msgid "Familiya"
+msgstr ""
+
+#: handlers/inform.py:50
+msgid "Email"
+msgstr ""
+
+#: handlers/inform.py:51
+msgid "Telefon raqam"
+msgstr ""
+
+#: handlers/inform.py:53
+msgid "Malumotlaringiz to'grimi"
+msgstr ""
+
+#: handlers/inform.py:59
+msgid "Malumotlaringiz yuborildi ✅"
+msgstr ""
+
+#: handlers/inform.py:65
+msgid "Siz proccesni rad etdingiz ❌"
+msgstr ""
+
+#: handlers/languages.py:19
+msgid "Tilni tanlang"
+msgstr ""
+
+#: handlers/languages.py:29
+msgid "Til o'zgardi ✅"
+msgstr ""
+
+#: handlers/languages.py:34
+msgid "Bosh menuga qaytdi ✅"
+msgstr ""
+
+#: handlers/news.py:22
+msgid "Nomi"
+msgstr ""
+
+#: handlers/news.py:23
+msgid "Tavsifi"
+msgstr ""
+
+#: handlers/news.py:24
+msgid "Narxi"
+msgstr ""
+
+#: handlers/start.py:32
+msgid "Assalomu alaykum"
+msgstr ""
+
+#: handlers/start.py:32
+msgid "Bizning botga hush kelibsiz"
+msgstr ""
+
