@@ -4,7 +4,7 @@ from sqlalchemy.orm import DeclarativeBase, declared_attr, Session
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 
-engine = create_engine(f'postgresql+psycopg2://postgres:1@localhost:5432/postgres')
+engine = create_engine(f'postgresql+psycopg2://postgres:1@localhost:5432/postgres_temur')
 session = Session(bind=engine)
 
 
