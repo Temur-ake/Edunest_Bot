@@ -8,7 +8,7 @@ def main_button():
     rkb.add(
         *[
             KeyboardButton(text=_('✅ Malumot qoldirish!')),
-            KeyboardButton(text=_('🏢 Biz haqimizda'), web_app=WebAppInfo(url='https://cambridgeonline.uz/')),
+            KeyboardButton(text=_('🏢 Biz haqimizda'), web_app=WebAppInfo(url='http://152.42.170.230:8024/')),
             KeyboardButton(text=_("📞 Biz bilan bog'lanish")),
             KeyboardButton(text=_("◀️ Yangilik")),
             KeyboardButton(text=_("🇺🇿/🇷🇺/🇬🇧/ Tilni o'zgaritirish"))
