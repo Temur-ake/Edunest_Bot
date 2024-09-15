@@ -6,9 +6,9 @@ from aiogram.types import KeyboardButton, Message
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram.utils.i18n import gettext as _
 from dotenv import load_dotenv
-from sqlalchemy import select, func
+from sqlalchemy import select
 
-from db.models import session, User
+from web.models import session, User
 from handlers.states import AdminState
 
 

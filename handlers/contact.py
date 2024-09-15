@@ -2,7 +2,7 @@ from aiogram import Router, F
 from aiogram.types import Message
 from sqlalchemy import select
 from aiogram.utils.i18n import gettext as _, lazy_gettext as __
-from db.models import Contact, session
+from web.models import Contact, session
 
 contact_router = Router()
 

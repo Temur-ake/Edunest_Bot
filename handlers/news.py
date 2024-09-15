@@ -3,7 +3,7 @@ from aiogram.types import Message
 from aiogram.utils.i18n import gettext as _, lazy_gettext as __
 from sqlalchemy import select
 
-from db.models import News, session
+from web.models import News, session
 
 news_router = Router()
 
