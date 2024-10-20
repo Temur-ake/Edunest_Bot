@@ -17,6 +17,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/www/temur_edu_bot
-            git pull 
-            systemctl restart temur_edu_bot.service
-            systemctl restart temur_bot_admin.service
+            mkdir new
