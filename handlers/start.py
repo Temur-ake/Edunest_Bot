@@ -1,13 +1,15 @@
 import os
+
 from aiogram import Router, html
 from aiogram.filters import CommandStart
 # from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 from aiogram.utils.i18n import gettext as _
-from web.models import session, User
+
 from handlers.admin import admin_button
 from keyboards import main_button
+from web.models import session, User
 
 start_router = Router()
 
