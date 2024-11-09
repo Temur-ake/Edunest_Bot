@@ -1,6 +1,6 @@
 import asyncio
 import os
-from aiogram import Router, F
+from aiogram import Router, F, types
 from aiogram.fsm.context import FSMContext
 from aiogram.types import KeyboardButton, Message
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
@@ -15,13 +15,20 @@ from handlers.states import AdminState
 def admin_button():
     rkb = ReplyKeyboardBuilder()
     rkb.add(
-        KeyboardButton(text=_('Reklama 🔊'))
+        KeyboardButton(text=_('Reklama 🔊')),
+        KeyboardButton(text="Admin Bo'limi")
     )
     return rkb.as_markup(resize_keyboard=True)
 
 
 load_dotenv()
 admin_router = Router()
+
+
+@admin_router.message(F.text == "Admin Bo'limi")
+async def admin(message: Message):
+    link = 'http://k.temur.life:8005'
+    await message.answer(text=f"Admin Bo'limi ga o'tish {link}")
 
 
 @admin_router.message(F.text == "Reklama 🔊", F.from_user.id == int(os.getenv('ADMIN_ID')))
