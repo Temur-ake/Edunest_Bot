@@ -90,12 +90,13 @@ async def handle_phone_number(message: Message, state: FSMContext):
     await message.answer(_("Malumotlaringiz to\'g\'rimi ?") + f" \n{client_data}", reply_markup=yes_no())
 
 
-
 @inform_router.callback_query(F.data == '1')
 async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
+    # Fetch data from the FSM context
     data = await state.get_data()
     course_name, level_name = await get_course_and_level_names(data, session)
 
+    # Create the client data message
     client_data = (
             f"🔉 Username: @{callback.from_user.username}\n"
             f"🫡 {_('Ism')}: {data['name']}\n"
@@ -103,13 +104,24 @@ async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
             f"📚 {_('Daraja')}: {level_name}\n"
             f"📅 {_('Dars kuni')}: {data['day']}\n"
             f"⏰ {_('Dars vaqti')}: {data['time']}\n"
-            f"⏰ " + _("Qo'shimcha Dars vaqti") + f": {data['q_time']}\n"  # Concatenation to avoid backslash in f-string
+            f"⏰ " + _("Qo'shimcha Dars vaqti") + f": {data['q_time']}\n"
                                                  f"📞 {_('Telefon raqami')}: {data['phone_number']}"
     )
+
+    # Send the client data to the specified chat
     await bot.send_message(-1002100096917, client_data)
+
+    # Acknowledge the callback query
+    await bot.answer_callback_query(callback.id, text=_("Malumotlaringiz yuborildi ✅"))
+
+    # Delete the callback message
     await callback.message.delete()
+
+    # Send confirmation to the user
     await callback.message.answer(_("Malumotlaringiz yuborildi ✅"), reply_markup=main_button())
-    await state.clear()
+
+    # Clear the state and finish the FSM
+    await state.finish()  # This clears the state
 
 
 @inform_router.callback_query(F.data == '0')
