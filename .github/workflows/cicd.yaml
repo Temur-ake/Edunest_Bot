@@ -16,7 +16,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/www/temur_edu_bot
+            cd /var/www/ttp_bot
             git pull 
-            systemctl restart temur_edu_bot.service
-            systemctl restart temur_bot_admin.service
+            systemctl restart ttp_bot.service
+            systemctl restart ttp_bot_a.service
