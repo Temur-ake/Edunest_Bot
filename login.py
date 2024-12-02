@@ -43,7 +43,7 @@ class UsernameAndPasswordProvider(AuthProvider):
 
     def get_admin_config(self, request: Request) -> AdminConfig:
         return AdminConfig(
-            app_title="Factor Bot Admin"
+            app_title="TTP Bot Admin"
         )
 
     def get_admin_user(self, request: Request) -> AdminUser:

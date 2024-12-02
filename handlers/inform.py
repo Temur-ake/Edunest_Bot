@@ -8,7 +8,7 @@ from aiogram.utils.i18n import lazy_gettext as __
 from handlers.states import Data
 from keyboards import main_button, yes_no, get_courses_keyboard, get_levels_keyboard, \
     get_times_keyboard, get_days_keyboard, get_course_and_level_names, get_q_times_keyboard
-from web.models import session
+from models import session
 
 inform_router = Router()
 
@@ -77,13 +77,13 @@ async def handle_phone_number(message: Message, state: FSMContext):
     course_name, level_name = await get_course_and_level_names(data, session)
 
     client_data = (
-        f"🔉 Username: @{message.from_user.username}\n"
+        f"🔉 Username: @{callback.from_user.username}\n"
         f"🫡 {_('Ism')}: {data['name']}\n"
         f"🎓 {_('Kurs')}: {course_name}\n"
         f"📚 {_('Daraja')}: {level_name}\n"
         f"📅 {_('Dars kuni')}: {data['day']}\n"
         f"⏰ {_('Dars vaqti')}: {data['time']}\n"
-        f"⏰ {_("Qo'shimcha Dars vaqti")}: {data['q_time']}\n"
+        f"⏰ {_('Qo\'shimcha Dars vaqti')}: {data['q_time']}\n"
         f"📞 {_('Telefon raqami')}: {data['phone_number']}"
     )
 
@@ -102,7 +102,7 @@ async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
         f"📚 {_('Daraja')}: {level_name}\n"
         f"📅 {_('Dars kuni')}: {data['day']}\n"
         f"⏰ {_('Dars vaqti')}: {data['time']}\n"
-        f"⏰ {_("Qo'shimcha Dars vaqti")}: {data['q_time']}\n"
+        f"⏰ {_('Qo\'shimcha Dars vaqti')}: {data['q_time']}\n"
         f"📞 {_('Telefon raqami')}: {data['phone_number']}"
     )
 

@@ -10,7 +10,7 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from dotenv import load_dotenv
 
 from handlers.states import AdminState
-from web.models import session, User
+from models import session, User
 
 
 def admin_button():

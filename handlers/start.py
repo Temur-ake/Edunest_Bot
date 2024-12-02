@@ -9,14 +9,12 @@ from aiogram.utils.i18n import gettext as _
 
 from handlers.admin import admin_button
 from keyboards import main_button
-from web.models import session, User
+from models import session, User
 
 start_router = Router()
 
 CHANNELS = [
-    "@channel2_temur",
-    "@temur_chanel_4",
-    "@channel3_temur"
+    "@TTP_Kurgantepa"
 ]
 
 

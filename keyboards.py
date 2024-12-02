@@ -2,7 +2,7 @@ from aiogram.types import KeyboardButton, InlineKeyboardButton, InlineKeyboardMa
 from aiogram.utils.i18n import gettext as _
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
-from web.models import Course, session, Level
+from models import Course, session, Level
 
 
 def main_button():

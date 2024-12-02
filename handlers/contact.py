@@ -3,7 +3,7 @@ from aiogram.types import Message, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from sqlalchemy.future import select
 from aiogram.utils.i18n import gettext as _, lazy_gettext as __
-from web.models import Contact, session
+from models import Contact, session
 
 contact_router = Router()
 

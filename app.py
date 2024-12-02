@@ -6,7 +6,7 @@ from starlette_admin.contrib.sqla import Admin, ModelView
 
 from login import UsernameAndPasswordProvider
 from models import Contact, News, engine
-from web.models import Course, User, Level
+from models import Course, User, Level
 
 app = Starlette()
 
@@ -24,4 +24,4 @@ admin.add_view(ModelView(Level, icon='fas fa-news'))
 
 admin.mount_to(app)
 if __name__ == '__main__':
-    uvicorn.run(app, host="k.temur.life", port=8033)
+    uvicorn.run(app, host="localhost", port=8033)
