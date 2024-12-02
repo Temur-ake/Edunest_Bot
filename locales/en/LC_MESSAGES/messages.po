@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-12-02 22:22+0500\n"
-"PO-Revision-Date: 2024-12-02 12:04+0500\n"
+"POT-Creation-Date: 2024-12-02 23:21+0500\n"
+"PO-Revision-Date: 2024-12-02 23:10+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -68,84 +68,83 @@ msgstr "Information not found."
 
 #: handlers/contact.py:56
 msgid "Biz ijtimoiy tarmoqlarda"
-msgstr "We are on social media"
+msgstr "We are on social networks"
 
 #: handlers/contact.py:58
 msgid "Ijtimoiy tarmoq ma'lumotlari topilmadi."
-msgstr "Social media information not found."
+msgstr "Social network information not found."
 
-#: handlers/inform.py:18
+#: handlers/inform.py:17
 msgid "Ismingizni kiriting : "
-msgstr "Enter your name:"
+msgstr "Enter your name: "
 
-#: handlers/inform.py:25
+#: handlers/inform.py:24
 msgid "Kurslardan birini tanlang : "
-msgstr "Choose one of the courses:"
+msgstr "Select one of the courses: "
 
-#: handlers/inform.py:33
+#: handlers/inform.py:32
 msgid "Kurs darajasini tanlang : "
-msgstr "Select the course level:"
+msgstr "Select course level: "
 
-#: handlers/inform.py:41
+#: handlers/inform.py:40
 msgid "Dars kunlarini tanlang : "
-msgstr "Select the class days:"
+msgstr "Select class days: "
 
-#: handlers/inform.py:49
+#: handlers/inform.py:48
 msgid "Dars vaqtini tanlang : "
-msgstr "Select the class time:"
+msgstr "Select class time: "
 
-#: handlers/inform.py:57
+#: handlers/inform.py:56
 msgid "Qo'shimcha vaqtni  tanlang :"
 msgstr "Select additional time:"
 
-#: handlers/inform.py:66
-#, fuzzy
-msgid "Telefon raqamingizni kiriting : Masalan ( 99-011-27-00 )"
-msgstr "Enter your phone number: For example ( 99-011-27-00 )"
+#: handlers/inform.py:65
+msgid "Telefon raqamingizni kiriting : Masalan"
+msgstr "Enter your phone number: For example"
 
-#: handlers/inform.py:81 handlers/inform.py:102
+#: handlers/inform.py:80 handlers/inform.py:103
 msgid "Ism"
 msgstr "Name"
 
-#: handlers/inform.py:82 handlers/inform.py:103
+#: handlers/inform.py:81 handlers/inform.py:104
 msgid "Kurs"
 msgstr "Course"
 
-#: handlers/inform.py:83 handlers/inform.py:104
+#: handlers/inform.py:82 handlers/inform.py:105
 msgid "Daraja"
 msgstr "Level"
 
-#: handlers/inform.py:84 handlers/inform.py:105
+#: handlers/inform.py:83 handlers/inform.py:106
 msgid "Dars kuni"
 msgstr "Class day"
 
-#: handlers/inform.py:85 handlers/inform.py:106
+#: handlers/inform.py:84 handlers/inform.py:107
 msgid "Dars vaqti"
 msgstr "Class time"
 
-#: handlers/inform.py:86 handlers/inform.py:107
+#: handlers/inform.py:85 handlers/inform.py:108
 msgid "Qo'shimcha Dars vaqti"
 msgstr "Additional class time"
 
-#: handlers/inform.py:87 handlers/inform.py:108
+#: handlers/inform.py:86 handlers/inform.py:109
 msgid "Telefon raqami"
 msgstr "Phone number"
 
-#: handlers/inform.py:90
+#: handlers/inform.py:89
 msgid "Malumotlaringiz to'g'rimi ?"
 msgstr "Is your information correct?"
 
-#: handlers/inform.py:115 handlers/inform.py:121
+#: handlers/inform.py:114 handlers/inform.py:117
 msgid "Malumotlaringiz yuborildi ✅"
-msgstr "Your information has been submitted ✅"
+msgstr "Your information has been sent ✅"
 
-#: handlers/inform.py:130
-msgid "Siz proccesni rad etdingiz ❌"
-msgstr "You have rejected the process ❌"
+#: handlers/inform.py:125
+msgid "Siz protsessni rad etdingiz ❌"
+msgstr "You have canceled the process ❌"
 
 #: handlers/languages.py:19
 msgid "Tilni tanlang"
-msgstr "Choose language"
+msgstr "Select language"
 
 #: handlers/languages.py:29
 msgid "Til o'zgardi ✅"
@@ -153,7 +152,7 @@ msgstr "Language changed ✅"
 
 #: handlers/languages.py:34
 msgid "Bosh menuga qaytdi ✅"
-msgstr "Returned to the main menu ✅"
+msgstr "Returned to main menu ✅"
 
 #: handlers/news.py:24
 msgid "Nomi"
@@ -177,8 +176,5 @@ msgstr "Welcome to our bot"
 
 #: handlers/start.py:93
 msgid "Assalomu alaykum ! Obuna bo'ling : "
-msgstr "Hello! Subscribe:"
-
-#~ msgid "Reklama 🔊"
-#~ msgstr "Advertisement 🔊"
+msgstr "Hello! Subscribe here:"
 
