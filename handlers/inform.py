@@ -83,7 +83,7 @@ async def handle_phone_number(message: Message, state: FSMContext):
         f"📚 {_('Daraja')}: {level_name}\n"
         f"📅 {_('Dars kuni')}: {data['day']}\n"
         f"⏰ {_('Dars vaqti')}: {data['time']}\n"
-        f"⏰ {_('Qo\'shimcha Dars vaqti')}: {data['q_time']}\n"
+        f"⏰ {_("Qo'shimcha Dars vaqti")}: {data['q_time']}\n"
         f"📞 {_('Telefon raqami')}: {data['phone_number']}"
     )
 
@@ -102,7 +102,7 @@ async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
         f"📚 {_('Daraja')}: {level_name}\n"
         f"📅 {_('Dars kuni')}: {data['day']}\n"
         f"⏰ {_('Dars vaqti')}: {data['time']}\n"
-        f"⏰ {_('Qo\'shimcha Dars vaqti')}: {data['q_time']}\n"
+        f"⏰ {_("Qo'shimcha Dars vaqti")}: {data['q_time']}\n"
         f"📞 {_('Telefon raqami')}: {data['phone_number']}"
     )
 
