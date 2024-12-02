@@ -100,14 +100,14 @@ async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
     # Process the course data
     course_name, level_name = await get_course_and_level_names(data, session)
     client_data = (
-        f"🔉 Username: @{callback.from_user.username}\n"
-        f"🫡 {_('Ism')}: {data['name']}\n"
-        f"🎓 {_('Kurs')}: {course_name}\n"
-        f"📚 {_('Daraja')}: {level_name}\n"
-        f"📅 {_('Dars kuni')}: {data['day']}\n"
-        f"⏰ {_('Dars vaqti')}: {data['time']}\n"
-        f"⏰ {_('Qo\'shimcha Dars vaqti')}: {data['q_time']}\n"
-        f"📞 {_('Telefon raqami')}: {data['phone_number']}"
+            f"🔉 Username: @{callback.from_user.username}\n"
+            f"🫡 {_('Ism')}: {data['name']}\n"
+            f"🎓 {_('Kurs')}: {course_name}\n"
+            f"📚 {_('Daraja')}: {level_name}\n"
+            f"📅 {_('Dars kuni')}: {data['day']}\n"
+            f"⏰ {_('Dars vaqti')}: {data['time']}\n"
+            f"⏰ " + _("Qo'shimcha Dars vaqti") + f": {data['q_time']}\n"
+                                                 f"📞 {_('Telefon raqami')}: {data['phone_number']}"
     )
 
     # Send the message to the channel
