@@ -122,7 +122,7 @@ async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
     # Send confirmation to the user
     await callback.message.answer(_("Malumotlaringiz yuborildi ✅"), reply_markup=main_button())
 
-    # Finish the current state (this clears the state but does not affect user data)
+    await state.clear()
     await state.finish()
     await state.set_state(data=False)
     # Restore the user's language after finishing the state
