@@ -16,7 +16,7 @@ from models import session, User
 def admin_button():
     rkb = ReplyKeyboardBuilder()
     rkb.add(
-        KeyboardButton(text=_('Reklama 🔊')),
+        KeyboardButton(text='Reklama 🔊'),
         KeyboardButton(text="Admin Bo'limi")
     )
     return rkb.as_markup(resize_keyboard=True)

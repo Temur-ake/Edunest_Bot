@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-12-02 12:07+0500\n"
+"POT-Creation-Date: 2024-12-02 20:05+0500\n"
 "PO-Revision-Date: 2024-12-02 12:04+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -54,10 +54,6 @@ msgstr "Нет ❌"
 #: keyboards.py:50
 msgid "⬅️ Ortga"
 msgstr "⬅️ Назад"
-
-#: handlers/admin.py:19
-msgid "Reklama 🔊"
-msgstr "Реклама 🔊"
 
 #: handlers/contact.py:22 handlers/contact.py:24
 msgid "📞 Telefon raqamimiz "
@@ -107,31 +103,31 @@ msgstr "Выберите дополнительное время:"
 msgid "Telefon raqamingizni kiriting : Masalan ( 970501655 )"
 msgstr "Введите ваш номер телефона: Например (970501655)"
 
-#: handlers/inform.py:81 handlers/inform.py:100
+#: handlers/inform.py:81 handlers/inform.py:101
 msgid "Ism"
 msgstr "Имя"
 
-#: handlers/inform.py:82 handlers/inform.py:101
+#: handlers/inform.py:82 handlers/inform.py:102
 msgid "Kurs"
 msgstr "Курс"
 
-#: handlers/inform.py:83 handlers/inform.py:102
+#: handlers/inform.py:83 handlers/inform.py:103
 msgid "Daraja"
 msgstr "Уровень"
 
-#: handlers/inform.py:84 handlers/inform.py:103
+#: handlers/inform.py:84 handlers/inform.py:104
 msgid "Dars kuni"
 msgstr "День занятий"
 
-#: handlers/inform.py:85 handlers/inform.py:104
+#: handlers/inform.py:85 handlers/inform.py:105
 msgid "Dars vaqti"
 msgstr "Время занятий"
 
-#: handlers/inform.py:86 handlers/inform.py:105
+#: handlers/inform.py:86 handlers/inform.py:106
 msgid "Qo'shimcha Dars vaqti"
 msgstr "Дополнительное время занятий"
 
-#: handlers/inform.py:87 handlers/inform.py:106
+#: handlers/inform.py:87 handlers/inform.py:107
 msgid "Telefon raqami"
 msgstr "Номер телефона"
 
@@ -159,27 +155,30 @@ msgstr "Язык изменен ✅"
 msgid "Bosh menuga qaytdi ✅"
 msgstr "Возврат в главное меню ✅"
 
-#: handlers/news.py:22
+#: handlers/news.py:24
 msgid "Nomi"
 msgstr "Название"
 
-#: handlers/news.py:23
+#: handlers/news.py:26
 msgid "Tavsifi"
 msgstr "Описание"
 
-#: handlers/news.py:24
+#: handlers/news.py:29
 msgid "Narxi"
 msgstr "Цена"
 
-#: handlers/start.py:89
+#: handlers/start.py:86
 msgid "Assalomu alaykum"
 msgstr "Здравствуйте"
 
-#: handlers/start.py:89
+#: handlers/start.py:86
 msgid "Bizning botga hush kelibsiz"
 msgstr "Добро пожаловать в наш бот"
 
-#: handlers/start.py:95
+#: handlers/start.py:93
 msgid "Assalomu alaykum ! Obuna bo'ling : "
 msgstr "Здравствуйте! Подпишитесь:"
+
+#~ msgid "Reklama 🔊"
+#~ msgstr "Реклама 🔊"
 
