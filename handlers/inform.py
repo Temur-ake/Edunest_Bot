@@ -63,7 +63,7 @@ async def handle_time_selection(callback: CallbackQuery, state: FSMContext):
 async def handle_time_selection(callback: CallbackQuery, state: FSMContext):
     time = callback.data.split('_')[2]
     await state.update_data({'q_time': time})
-    await callback.message.answer(_('Telefon raqamingizni kiriting : Masalan ( 970501655 )'))
+    await callback.message.answer(_('Telefon raqamingizni kiriting : Masalan ( 99-011-27-00 )'))
     await state.set_state(Data.phone_number)
 
 

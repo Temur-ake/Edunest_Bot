@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-12-02 22:08+0500\n"
+"POT-Creation-Date: 2024-12-02 22:14+0500\n"
 "PO-Revision-Date: 2024-12-02 12:04+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uz\n"
@@ -99,7 +99,7 @@ msgid "Qo'shimcha vaqtni  tanlang :"
 msgstr ""
 
 #: handlers/inform.py:66
-msgid "Telefon raqamingizni kiriting : Masalan ( 970501655 )"
+msgid "Telefon raqamingizni kiriting : Masalan ( 99-011-27-00 )"
 msgstr ""
 
 #: handlers/inform.py:81 handlers/inform.py:102
@@ -179,5 +179,8 @@ msgid "Assalomu alaykum ! Obuna bo'ling : "
 msgstr ""
 
 #~ msgid "Reklama 🔊"
+#~ msgstr ""
+
+#~ msgid "Telefon raqamingizni kiriting : Masalan ( 970501655 )"
 #~ msgstr ""
 
