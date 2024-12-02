@@ -61,7 +61,7 @@ async def get_courses_keyboard():
     for course in courses:
         button = InlineKeyboardButton(
             text=course.name,
-            callback_data=f"course_{course.id}"
+            callback_data=f'course_{course.id}'
         )
         inline_buttons.append([button])
 
@@ -76,7 +76,7 @@ async def get_levels_keyboard(course_id):
     result = session.execute(select(Level).filter(Level.course_id == course_id))
     levels = result.scalars().all()
     for level in levels:
-        d = (InlineKeyboardButton(text=level.name, callback_data=f"level_{level.id}"))
+        d = (InlineKeyboardButton(text=level.name, callback_data=f'level_{level.id}'))
         ikb.append([d])
     ib = InlineKeyboardMarkup(inline_keyboard=ikb)
     return ib
@@ -86,7 +86,7 @@ async def get_days_keyboard():
     ikb = []
     days = ['D/CH/J', 'S/P/SH', '5 kun haftada']
     for day in days:
-        d = (InlineKeyboardButton(text=day, callback_data=f"day_{day}"))
+        d = (InlineKeyboardButton(text=day, callback_data=f'day_{day}'))
         ikb.append([d])
     ib = InlineKeyboardMarkup(inline_keyboard=ikb)
 
@@ -97,7 +97,7 @@ async def get_times_keyboard():
     ikb = []
     times = ['8:00 - 9:30', '9:30 - 11:00', '14:00 - 15:30', '15:30 - 17:00']
     for time in times:
-        d = (InlineKeyboardButton(text=time, callback_data=f"time_{time}"))
+        d = (InlineKeyboardButton(text=time, callback_data=f'time_{time}'))
         ikb.append([d])
     ib = InlineKeyboardMarkup(inline_keyboard=ikb)
     return ib
@@ -107,7 +107,7 @@ async def get_q_times_keyboard():
     ikb = []
     times = ['8:00 - 9:30', '9:30 - 11:00', '14:00 - 15:30', '15:30 - 17:00']
     for time in times:
-        d = (InlineKeyboardButton(text=time, callback_data=f"q_time_{time}"))
+        d = (InlineKeyboardButton(text=time, callback_data=f'q_time_{time}'))
         ikb.append([d])
     ib = InlineKeyboardMarkup(inline_keyboard=ikb)
     return ib
