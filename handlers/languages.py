@@ -31,4 +31,5 @@ async def language(message: Message, i18n: I18n, state: FSMContext):
 
 @language_router.message(F.text == __("⬅️ Ortga"))
 async def back(message: Message):
-    await message.answer(f'{_('Bosh menuga qaytdi ✅')}', reply_markup=main_button())
+    await message.answer(f'{_("Bosh menuga qaytdi ✅")}', reply_markup=main_button())
+
