@@ -14,7 +14,7 @@ from models import session, User
 start_router = Router()
 
 CHANNELS = [
-    "@TTP_Kurgantepa"
+    "@channel2_temur"
 ]
 
 

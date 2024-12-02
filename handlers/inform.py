@@ -87,7 +87,8 @@ async def handle_phone_number(message: Message, state: FSMContext):
                                                  f"📞 {_('Telefon raqami')}: {data['phone_number']}"
     )
 
-    await message.answer(f'{_("Malumotlaringiz to\'g\'rimi ?")} \n{client_data}', reply_markup=yes_no())
+    await message.answer(_("Malumotlaringiz to\'g\'rimi ?") + f" \n{client_data}", reply_markup=yes_no())
+
 
 
 @inform_router.callback_query(F.data == '1')
@@ -105,7 +106,6 @@ async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
             f"⏰ " + _("Qo'shimcha Dars vaqti") + f": {data['q_time']}\n"  # Concatenation to avoid backslash in f-string
                                                  f"📞 {_('Telefon raqami')}: {data['phone_number']}"
     )
-
     await bot.send_message(-1002100096917, client_data)
     await callback.message.delete()
     await callback.message.answer(_("Malumotlaringiz yuborildi ✅"), reply_markup=main_button())
