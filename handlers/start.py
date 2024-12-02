@@ -46,8 +46,8 @@ async def get_subscription_check_markup(user_id, bot: Bot):
 
     for channel in not_subscribed_channels:
         button = InlineKeyboardButton(
-            text=f'{channel}',
-            url=f't.me/{channel.strip('@')}'
+            text=f"{channel}",
+            url=f"t.me/{channel.strip('@')}"
         )
         inline_buttons.append([button])
 
