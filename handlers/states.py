@@ -10,6 +10,7 @@ class Data(StatesGroup):
     q_time = State()
     phone_number = State()
     language = State()
+    end = State()
 
 
 class AdminState(StatesGroup):

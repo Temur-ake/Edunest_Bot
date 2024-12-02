@@ -1,9 +1,9 @@
 # inform.py
-from aiogram import Router, F, Bot
+from aiogram import Router, F, Bot, exceptions
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
-from aiogram.utils.i18n import gettext as _
 from aiogram.utils.i18n import lazy_gettext as __
+from aiogram.utils.i18n import gettext as _
 
 from handlers.states import Data
 from keyboards import main_button, yes_no, get_courses_keyboard, get_levels_keyboard, \
@@ -44,7 +44,7 @@ async def handle_level_selection(callback: CallbackQuery, state: FSMContext):
 
 @inform_router.callback_query(F.data.startswith('day_'))
 async def handle_day_selection(callback: CallbackQuery, state: FSMContext):
-    day = callback.data.split('_')[1]  # D/CH/J or S/P/SH
+    day = callback.data.split('_')[1]
     await state.update_data({'day': day})
     await callback.message.answer(_('Dars vaqtini tanlang : '), reply_markup=await get_times_keyboard())
     await state.set_state(Data.time)
@@ -63,7 +63,7 @@ async def handle_time_selection(callback: CallbackQuery, state: FSMContext):
 async def handle_time_selection(callback: CallbackQuery, state: FSMContext):
     time = callback.data.split('_')[2]
     await state.update_data({'q_time': time})
-    await callback.message.answer(_('Telefon raqamingizni kiriting : Masalan ( 99-011-27-00 )'))
+    await callback.message.answer(_('Telefon raqamingizni kiriting : Masalan') + '( 99-011-27-00 )')
     await state.set_state(Data.phone_number)
 
 
@@ -83,7 +83,7 @@ async def handle_phone_number(message: Message, state: FSMContext):
             f"📚 {_('Daraja')}: {level_name}\n"
             f"📅 {_('Dars kuni')}: {data['day']}\n"
             f"⏰ {_('Dars vaqti')}: {data['time']}\n"
-            f"⏰ " + _("Qo'shimcha Dars vaqti") + f": {data['q_time']}\n"  # Concatenation to avoid backslash in f-string
+            f"⏰ " + _("Qo'shimcha Dars vaqti") + f": {data['q_time']}\n"
                                                  f"📞 {_('Telefon raqami')}: {data['phone_number']}"
     )
 
@@ -92,23 +92,25 @@ async def handle_phone_number(message: Message, state: FSMContext):
 
 @inform_router.callback_query(F.data == '1')
 async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
-    # Fetch data from the FSM context
     data = await state.get_data()
-    course_name, level_name = await get_course_and_level_names(data, session)
 
-    # Create the client data message
+    # Save the language before clearing the state (default to 'uz' if not found)
+    user_language = data.get('language', 'uz')
+
+    # Process the course data
+    course_name, level_name = await get_course_and_level_names(data, session)
     client_data = (
-            f"🔉 Username: @{callback.from_user.username}\n"
-            f"🫡 {_('Ism')}: {data['name']}\n"
-            f"🎓 {_('Kurs')}: {course_name}\n"
-            f"📚 {_('Daraja')}: {level_name}\n"
-            f"📅 {_('Dars kuni')}: {data['day']}\n"
-            f"⏰ {_('Dars vaqti')}: {data['time']}\n"
-            f"⏰ " + _("Qo'shimcha Dars vaqti") + f": {data['q_time']}\n"
-                                                 f"📞 {_('Telefon raqami')}: {data['phone_number']}"
+        f"🔉 Username: @{callback.from_user.username}\n"
+        f"🫡 {_('Ism')}: {data['name']}\n"
+        f"🎓 {_('Kurs')}: {course_name}\n"
+        f"📚 {_('Daraja')}: {level_name}\n"
+        f"📅 {_('Dars kuni')}: {data['day']}\n"
+        f"⏰ {_('Dars vaqti')}: {data['time']}\n"
+        f"⏰ {_('Qo\'shimcha Dars vaqti')}: {data['q_time']}\n"
+        f"📞 {_('Telefon raqami')}: {data['phone_number']}"
     )
 
-    # Send the client data to the specified chat
+    # Send the message to the channel
     await bot.send_message(-1002100096917, client_data)
 
     # Acknowledge the callback query
@@ -120,11 +122,19 @@ async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
     # Send confirmation to the user
     await callback.message.answer(_("Malumotlaringiz yuborildi ✅"), reply_markup=main_button())
 
-    # Clear the state and finish the FSM
-    await state.finish()  # This clears the state
+    # Finish the current state (this clears the state but does not affect user data)
+    await state.finish()
+
+    # Restore the user's language after finishing the state
+    await state.update_data(language=user_language)
+
+    # Optionally, set the state back to the language (if needed)
+    await state.set_state(Data.language)
+
+
 
 
 @inform_router.callback_query(F.data == '0')
 async def no(callback: CallbackQuery, bot: Bot):
     await callback.message.delete()
-    await bot.send_message(callback.message.chat.id, _("Siz proccesni rad etdingiz ❌"), reply_markup=main_button())
+    await bot.send_message(callback.message.chat.id, _("Siz protsessni rad etdingiz ❌"), reply_markup=main_button())

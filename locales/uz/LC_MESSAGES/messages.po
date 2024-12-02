@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-12-02 22:22+0500\n"
-"PO-Revision-Date: 2024-12-02 12:04+0500\n"
+"POT-Creation-Date: 2024-12-02 23:21+0500\n"
+"PO-Revision-Date: 2024-12-02 23:10+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uz\n"
 "Language-Team: uz <LL@li.org>\n"
@@ -74,72 +74,72 @@ msgstr ""
 msgid "Ijtimoiy tarmoq ma'lumotlari topilmadi."
 msgstr ""
 
-#: handlers/inform.py:18
+#: handlers/inform.py:17
 msgid "Ismingizni kiriting : "
 msgstr ""
 
-#: handlers/inform.py:25
+#: handlers/inform.py:24
 msgid "Kurslardan birini tanlang : "
 msgstr ""
 
-#: handlers/inform.py:33
+#: handlers/inform.py:32
 msgid "Kurs darajasini tanlang : "
 msgstr ""
 
-#: handlers/inform.py:41
+#: handlers/inform.py:40
 msgid "Dars kunlarini tanlang : "
 msgstr ""
 
-#: handlers/inform.py:49
+#: handlers/inform.py:48
 msgid "Dars vaqtini tanlang : "
 msgstr ""
 
-#: handlers/inform.py:57
+#: handlers/inform.py:56
 msgid "Qo'shimcha vaqtni  tanlang :"
 msgstr ""
 
-#: handlers/inform.py:66
-msgid "Telefon raqamingizni kiriting : Masalan ( 99-011-27-00 )"
+#: handlers/inform.py:65
+msgid "Telefon raqamingizni kiriting : Masalan"
 msgstr ""
 
-#: handlers/inform.py:81 handlers/inform.py:102
+#: handlers/inform.py:80 handlers/inform.py:103
 msgid "Ism"
 msgstr ""
 
-#: handlers/inform.py:82 handlers/inform.py:103
+#: handlers/inform.py:81 handlers/inform.py:104
 msgid "Kurs"
 msgstr ""
 
-#: handlers/inform.py:83 handlers/inform.py:104
+#: handlers/inform.py:82 handlers/inform.py:105
 msgid "Daraja"
 msgstr ""
 
-#: handlers/inform.py:84 handlers/inform.py:105
+#: handlers/inform.py:83 handlers/inform.py:106
 msgid "Dars kuni"
 msgstr ""
 
-#: handlers/inform.py:85 handlers/inform.py:106
+#: handlers/inform.py:84 handlers/inform.py:107
 msgid "Dars vaqti"
 msgstr ""
 
-#: handlers/inform.py:86 handlers/inform.py:107
+#: handlers/inform.py:85 handlers/inform.py:108
 msgid "Qo'shimcha Dars vaqti"
 msgstr ""
 
-#: handlers/inform.py:87 handlers/inform.py:108
+#: handlers/inform.py:86 handlers/inform.py:109
 msgid "Telefon raqami"
 msgstr ""
 
-#: handlers/inform.py:90
+#: handlers/inform.py:89
 msgid "Malumotlaringiz to'g'rimi ?"
 msgstr ""
 
-#: handlers/inform.py:115 handlers/inform.py:121
+#: handlers/inform.py:114 handlers/inform.py:117
 msgid "Malumotlaringiz yuborildi ✅"
 msgstr ""
 
-#: handlers/inform.py:130
-msgid "Siz proccesni rad etdingiz ❌"
+#: handlers/inform.py:125
+msgid "Siz protsessni rad etdingiz ❌"
 msgstr ""
 
 #: handlers/languages.py:19
@@ -177,10 +177,4 @@ msgstr ""
 #: handlers/start.py:93
 msgid "Assalomu alaykum ! Obuna bo'ling : "
 msgstr ""
-
-#~ msgid "Reklama 🔊"
-#~ msgstr ""
-
-#~ msgid "Telefon raqamingizni kiriting : Masalan ( 970501655 )"
-#~ msgstr ""
 
