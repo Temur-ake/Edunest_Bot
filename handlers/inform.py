@@ -124,7 +124,7 @@ async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
 
     # Finish the current state (this clears the state but does not affect user data)
     await state.finish()
-
+    await state.set_state(data=False)
     # Restore the user's language after finishing the state
     await state.update_data(language=user_language)
 
