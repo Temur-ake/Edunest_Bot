@@ -32,7 +32,7 @@ async def admin(message: Message):
     await message.answer(text=f'Admin Bolimi ga otish {link}')
 
 
-@admin_router.message(F.text == "Reklama 🔊", F.from_user.id == int(os.getenv('ADMIN_ID')))
+@admin_router.message(F.text == 'Reklama 🔊', F.from_user.id == int(os.getenv('ADMIN_ID')))
 async def admin(message: Message, state: FSMContext):
     await message.answer("Reklama rasmini kiriting !")
     await state.set_state(AdminState.photo)
