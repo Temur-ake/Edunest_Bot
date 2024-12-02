@@ -83,7 +83,8 @@ async def command_start_handler(message: Message, state: FSMContext, bot: Bot) -
 
     elif not not_subscribed_channels:
         await message.answer(
-            f'{_('Assalomu alaykum')}, {full_name}\n\n{_('Bizning botga hush kelibsiz')}',
+            f'{_("Assalomu alaykum")}, {full_name}\n\n{_("Bizning botga hush kelibsiz")}',
+
             reply_markup=main_button()
         )
     else:
