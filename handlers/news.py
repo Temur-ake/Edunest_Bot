@@ -19,7 +19,8 @@ async def inform(message: Message):
     query4 = select(News.price)
     price = session.execute(query4).scalars().first()
 
-    d = (f'🔅 {_('Nomi')}: {title}\n'
-         f'☝️ {_('Tavsifi')}:  {description}\n'
-         f'🤑 {_('Narxi')}: {price}\n')
+    d = (f'🔅 {_("Nomi")}: {title}\n'
+         f'☝️ {_("Tavsifi")}: {description}\n'
+         f'🤑 {_("Narxi")}: {price}\n')
+
     await message.answer_photo(photo=image, caption=d)
