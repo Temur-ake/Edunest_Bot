@@ -1,4 +1,4 @@
-name: Drf P21 CI/CD  Deployment
+name: Drf P21 CI/CD  Deployment2
 
 on:
   push:
