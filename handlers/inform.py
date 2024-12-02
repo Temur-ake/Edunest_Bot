@@ -78,13 +78,13 @@ async def handle_phone_number(message: Message, state: FSMContext):
 
     client_data = (
         f"🔉 Username: @{message.from_user.username}\n"
-        f"🫡 {_('Ism')}: {data['name']}\n"
-        f"🎓 {_('Kurs')}: {course_name}\n"
-        f"📚 {_('Daraja')}: {level_name}\n"
-        f"📅 {_('Dars kuni')}: {data['day']}\n"
-        f"⏰ {_('Dars vaqti')}: {data['time']}\n"
-        f"⏰ {_("Qo'shimcha Dars vaqti")}: {data['q_time']}\n"
-        f"📞 {_('Telefon raqami')}: {data['phone_number']}"
+        f"🫡 Ism: {data['name']}\n"
+        f"🎓 Kurs: {course_name}\n"
+        f"📚 Daraja: {level_name}\n"
+        f"📅 Dars kuni: {data['day']}\n"
+        f"⏰ Dars vaqti: {data['time']}\n"
+        f"⏰ Qo'shimcha Dars vaqti: {data['q_time']}\n"
+        f"📞 Telefon raqami: {data['phone_number']}"
     )
 
     await message.answer(f'{_("Malumotlaringiz to\'g\'rimi ?")} \n{client_data}', reply_markup=yes_no())
@@ -97,13 +97,13 @@ async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
 
     client_data = (
         f"🔉 Username: @{callback.from_user.username}\n"
-        f"🫡 {_('Ism')}: {data['name']}\n"
-        f"🎓 {_('Kurs')}: {course_name}\n"
-        f"📚 {_('Daraja')}: {level_name}\n"
-        f"📅 {_('Dars kuni')}: {data['day']}\n"
-        f"⏰ {_('Dars vaqti')}: {data['time']}\n"
-        f"⏰ {_("Qo'shimcha Dars vaqti")}: {data['q_time']}\n"
-        f"📞 {_('Telefon raqami')}: {data['phone_number']}"
+        f"🫡 Ism: {data['name']}\n"
+        f"🎓 Kurs: {course_name}\n"
+        f"📚 Daraja: {level_name}\n"
+        f"📅 Dars kuni: {data['day']}\n"
+        f"⏰ Dars vaqti: {data['time']}\n"
+        f"⏰ Qo'shimcha Dars vaqti: {data['q_time']}\n"
+        f"📞 Telefon raqami: {data['phone_number']}"
     )
 
     await bot.send_message(-1002100096917, client_data)
