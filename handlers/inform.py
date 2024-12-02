@@ -77,7 +77,7 @@ async def handle_phone_number(message: Message, state: FSMContext):
     course_name, level_name = await get_course_and_level_names(data, session)
 
     client_data = (
-        f"🔉 Username: @{callback.from_user.username}\n"
+        f"🔉 Username: @{message.from_user.username}\n"
         f"🫡 {_('Ism')}: {data['name']}\n"
         f"🎓 {_('Kurs')}: {course_name}\n"
         f"📚 {_('Daraja')}: {level_name}\n"
