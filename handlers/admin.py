@@ -1,15 +1,16 @@
 import asyncio
 import os
-from aiogram import Router, F, types
+
+import aiogram
+from aiogram import Router, F
 from aiogram.fsm.context import FSMContext
 from aiogram.types import KeyboardButton, Message
-from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram.utils.i18n import gettext as _
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from dotenv import load_dotenv
-from sqlalchemy import select
 
-from web.models import session, User
 from handlers.states import AdminState
+from web.models import session, User
 
 
 def admin_button():
@@ -37,6 +38,7 @@ async def admin(message: Message, state: FSMContext):
     await state.set_state(AdminState.photo)
 
 
+# Handle photo upload for the ad
 @admin_router.message(AdminState.photo, F.from_user.id == int(os.getenv('ADMIN_ID')), ~F.text, F.photo)
 async def admin(message: Message, state: FSMContext):
     photo = message.photo[-1].file_id
@@ -51,35 +53,43 @@ async def admin(message: Message, state: FSMContext):
     await state.update_data({"title": title})
 
     data = await state.get_data()
-    photo = data.get('photo')
-    title = data.get('title')
-
     await state.clear()
 
-    query_users = select(User.user_id)
-    users = session.execute(query_users).scalars().all()
+    users = session.query(User).filter(User.user_id.isnot(None)).all()
 
     if not users:
-        await message.answer("No users found.")
+        await message.answer("Hech kimga reklama yuborilmadi. Foydalanuvchilar mavjud emas.")
         return
 
     tasks = []
-    count = 0
-    max_tasks_per_batch = 28
+    for user in users:
+        if user.user_id:
+            try:
 
-    for user_id in users:
-        if len(tasks) >= max_tasks_per_batch:
-            await asyncio.gather(*tasks)
-            tasks = []
+                chat_member = await message.bot.get_chat_member(user.user_id, user.user_id)
 
-        try:
-            tasks.append(message.bot.send_photo(chat_id=user_id, photo=photo, caption=title))
-            count += 1
-        except Exception as e:
-            print(f"Error sending message to user {user_id}: {e}")
+                if chat_member.status == 'left' or chat_member.status == 'kicked':
+                    print(f"User {user.user_id} has blocked the bot or left the chat. Skipping.")
+                    continue
 
+                tasks.append(message.bot.send_photo(
+                    chat_id=user.user_id,
+                    photo=data['photo'],
+                    caption=data['title']
+                ))
+
+            except aiogram.exceptions.TelegramForbiddenError:
+
+                print(f"User {user.user_id} has blocked the bot. Skipping this user.")
+                continue
+
+            except aiogram.exceptions.TelegramBadRequest as e:
+
+                if "chat not found" in str(e):
+                    print(f"User {user.user_id} not found. Skipping.")
+                else:
+                    print(f"Failed to send to user {user.user_id}: {e}")
+                continue
+    await message.answer("Reklama yuborildi !")
     if tasks:
         await asyncio.gather(*tasks)
-
-    await message.answer("Reklama yuborildi !", reply_markup=admin_button())
-    await state.set_state(AdminState.end)

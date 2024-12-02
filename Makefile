@@ -1,3 +1,9 @@
+init:
+	pybabel init -i locales/messages.pot -d locales -D messages -l en
+	pybabel init -i locales/messages.pot -d locales -D messages -l uz
+	pybabel init -i locales/messages.pot -d locales -D messages -l ru
+
+
 extract:
 	 pybabel extract --input-dirs=. -o locales/messages.pot
 update:

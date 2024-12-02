@@ -1,10 +1,10 @@
+import asyncio
 import os
 
-from aiogram import Router, html
+from aiogram import Router, html, Bot
 from aiogram.filters import CommandStart
-# from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message
+from aiogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardRemove
 from aiogram.utils.i18n import gettext as _
 
 from handlers.admin import admin_button
@@ -13,11 +13,62 @@ from web.models import session, User
 
 start_router = Router()
 
+CHANNELS = [
+    "@channel2_temur",
+    "@temur_chanel_4",
+    "@channel3_temur"
+]
+
+
+async def is_user_subscribed(user_id, bot: Bot):
+    not_subscribed_channels = []
+
+    for channel in CHANNELS:
+        try:
+
+            status = await bot.get_chat_member(channel, user_id)
+            print(f"User {user_id} status in {channel}: {status.status}")
+            if status.status not in ['member', 'administrator', 'creator']:
+                print(f"User {user_id} is not subscribed to {channel}.")
+                not_subscribed_channels.append(channel)
+        except Exception as e:
+
+            print(f"Error checking subscription for user {user_id} in channel {channel}: {e}")
+            if "Bad Request: chat not found" in str(e):
+                print(
+                    f"Could not check subscription for channel {channel}. The channel might be private or the bot does not have permission.")
+            not_subscribed_channels.append(channel)
+
+    return not_subscribed_channels
+
+
+async def get_subscription_check_markup(user_id, bot: Bot):
+    inline_buttons = []
+
+    not_subscribed_channels = await is_user_subscribed(user_id, bot)
+
+    for channel in not_subscribed_channels:
+        button = InlineKeyboardButton(
+            text=f"{channel}",
+            url=f"t.me/{channel.strip('@')}"
+        )
+        inline_buttons.append([button])
+
+    ikb = InlineKeyboardMarkup(inline_keyboard=inline_buttons)
+    return ikb
+
 
 @start_router.message(CommandStart())
-async def command_start_handler(message: Message, state: FSMContext) -> None:
+async def command_start_handler(message: Message, state: FSMContext, bot: Bot) -> None:
+    animation = await message.answer(text=f"⏳")
+    await asyncio.sleep(1)
+    await bot.delete_message(chat_id=message.chat.id, message_id=animation.message_id)
+
     user_id = message.from_user.id
     full_name = html.bold(message.from_user.full_name)
+
+    await message.answer("Ish boshlanmoqdaa ...",
+                         reply_markup=ReplyKeyboardRemove())
 
     existing_user = session.query(User).filter_by(user_id=user_id).first()
     if not existing_user:
@@ -25,22 +76,32 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
         session.add(new_user)
         session.commit()
 
-    if user_id == int(os.getenv('ADMIN_ID')):
+    not_subscribed_channels = await is_user_subscribed(user_id, bot)
+
+    if int(message.from_user.id) == int(os.getenv('ADMIN_ID')):
         await message.answer(
             f'Assalomu alykum admin {full_name}',
             reply_markup=admin_button()
         )
-    else:
+
+    elif not not_subscribed_channels:
         await message.answer(
             f"{_('Assalomu alaykum')}, {full_name}\n\n{_('Bizning botga hush kelibsiz')}",
             reply_markup=main_button()
         )
+    else:
+
+        markup = await get_subscription_check_markup(user_id, bot)
+        await message.answer(_("Assalomu alaykum ! Obuna bo'ling : "), reply_markup=markup)
+
+        await state.set_state('awaiting_subscription')
 
     try:
+
         data = await state.get_data()
         locale = data.get('locale', 'en')
     except Exception as e:
-        print(f"An error occurred while retrieving state data: {e}")
+        print(f"Xato yuz berdi: {e}")
         locale = 'en'
 
     await state.clear()
