@@ -24,4 +24,4 @@ admin.add_view(ModelView(Level, icon='fas fa-news'))
 
 admin.mount_to(app)
 if __name__ == '__main__':
-    uvicorn.run(app, host="localhost", port=8020)
+    uvicorn.run(app, host="k.temur.life", port=8033)
