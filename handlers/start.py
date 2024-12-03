@@ -31,7 +31,8 @@ async def is_user_subscribed(user_id, bot: Bot):
                 not_subscribed_channels.append(channel)
         except Exception as e:
             if "Bad Request: chat not found" in str(e):
-                print(f'Could not check subscription for channel {channel}. The channel might be private or the bot does not have permission.')
+                print(
+                    f'Could not check subscription for channel {channel}. The channel might be private or the bot does not have permission.')
             not_subscribed_channels.append(channel)
 
     return not_subscribed_channels
@@ -48,6 +49,8 @@ async def get_subscription_check_markup(user_id, bot: Bot):
             url=f"t.me/{channel.strip('@')}"
         )
         inline_buttons.append([button])
+
+    inline_buttons.append([InlineKeyboardButton(text="A'zo bo'ldim ✅", callback_data="start_process")])
 
     ikb = InlineKeyboardMarkup(inline_keyboard=inline_buttons)
     return ikb
@@ -82,11 +85,7 @@ async def command_start_handler(message: Message, state: FSMContext, bot: Bot) -
 
     # Handle subscription or welcome message
     if not not_subscribed_channels:
-        # Check and set locale to 'uz' (default) if not set
-        data = await state.get_data()
-        locale = data.get('locale', 'uz')  # Default to 'uz' if locale is not set
-        await state.update_data({'locale': locale})
-
+        # If the user is subscribed to all channels, show the "Azo bo'ldim" button
         await message.answer(
             f'{_("Assalomu alaykum")}, {full_name}\n\n{_("Bizning botga hush kelibsiz")}',
             reply_markup=main_button()
@@ -100,7 +99,7 @@ async def command_start_handler(message: Message, state: FSMContext, bot: Bot) -
     # Ensure the default locale is set to 'uz' if the state does not contain a locale
     try:
         data = await state.get_data()
-        locale = data.get('locale', 'uz')  # Default to 'uz' if no locale is found
+        locale = data.get('locale', 'uz')  # Default to 'uz' if locale is not set
         print(f"Locale for user {user_id}: {locale}")
     except Exception as e:
         print(f'Error fetching locale: {e}')
@@ -112,4 +111,3 @@ async def command_start_handler(message: Message, state: FSMContext, bot: Bot) -
     # Ensure that i18n uses the correct locale for translations
     # This assumes you're using aiogram's i18n system for translation handling
     i18n.current_locale = locale  # Set the locale for i18n translations
-
