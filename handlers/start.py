@@ -14,7 +14,7 @@ from models import session, User
 start_router = Router()
 
 CHANNELS = [
-    "@channel2_temur"
+    "@TTP_Kurgantepa"
 ]
 
 
@@ -95,13 +95,11 @@ async def command_start_handler(message: Message, state: FSMContext, bot: Bot) -
         await state.set_state('awaiting_subscription')
 
     try:
-        # Set default language to 'uz' if not set previously
         data = await state.get_data()
-        locale = data.get('locale', 'uz')  # Default to 'uz' (Uzbek)
+        locale = data.get('locale', 'uz')
     except Exception as e:
         print(f'Xato yuz berdi: {e}')
         locale = 'uz'
 
-        # Update state with locale
     await state.clear()
     await state.update_data({'locale': locale})
