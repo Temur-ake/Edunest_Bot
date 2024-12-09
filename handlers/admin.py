@@ -28,7 +28,7 @@ admin_router = Router()
 
 @admin_router.message(F.text == "Admin Bo'limi")
 async def admin(message: Message):
-    link = 'http://k.temur.life:8033'
+    link = 'http://k.feniks.best:8033'
     await message.answer(text=f'Admin Bolimi ga otish {link}')
 
 
