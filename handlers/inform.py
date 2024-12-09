@@ -94,7 +94,6 @@ async def handle_phone_number(message: Message, state: FSMContext):
 async def yes(callback: CallbackQuery, bot: Bot, state: FSMContext):
     data = await state.get_data()
 
-    # Save the language before clearing the state (default to 'uz' if not found)
     user_language = data.get('language', 'uz')
 
     # Process the course data
