@@ -18,7 +18,6 @@ CHANNELS = [
     "@TTP_Kurgantepa"
 ]
 
-
 async def is_user_subscribed(user_id, bot: Bot):
     not_subscribed_channels = []
 
@@ -36,25 +35,24 @@ async def is_user_subscribed(user_id, bot: Bot):
 
     return not_subscribed_channels
 
-
 async def get_subscription_check_markup(user_id, bot: Bot):
     inline_buttons = []
-
     not_subscribed_channels = await is_user_subscribed(user_id, bot)
 
+    # Only create buttons for channels that the user is not subscribed to
     for channel in not_subscribed_channels:
         button = InlineKeyboardButton(
-            text=f"{channel}",
+            text=f"Join {channel}",
             url=f"t.me/{channel.strip('@')}"
         )
         inline_buttons.append([button])
 
-    ikb = InlineKeyboardMarkup(inline_keyboard=inline_buttons)
-    return ikb
-
+    # If there are no not subscribed channels, return an empty markup (no buttons)
+    return InlineKeyboardMarkup(inline_keyboard=inline_buttons) if inline_buttons else None
 
 @start_router.message(CommandStart())
 async def command_start_handler(message: Message, state: FSMContext, bot: Bot) -> None:
+    # Animation message to indicate bot is processing
     animation = await message.answer(text=f'⏳')
     await asyncio.sleep(1)
     await bot.delete_message(chat_id=message.chat.id, message_id=animation.message_id)
@@ -71,45 +69,47 @@ async def command_start_handler(message: Message, state: FSMContext, bot: Bot) -
         session.add(new_user)
         session.commit()
 
+    # Check subscription status
     not_subscribed_channels = await is_user_subscribed(user_id, bot)
 
     # Admin check
-    if int(message.from_user.id) == int(os.getenv('ADMIN_ID')):
+    if message.from_user.id == int(os.getenv('ADMIN_ID')):
         await message.answer(
             f'Assalomu alaykum admin {full_name}',
             reply_markup=admin_button()
         )
+        return
 
-    # Handle subscription or welcome message
+    # If the user is subscribed to all channels, send a welcome message
     if not not_subscribed_channels:
-        # Check and set locale to 'uz' (default) if not set
+        # Ensure that the locale is set, defaulting to 'uz' if not present
         data = await state.get_data()
-        locale = data.get('locale', 'uz')  # Default to 'uz' if locale is not set
+        locale = data.get('locale', 'uz')
         await state.update_data({'locale': locale})
+
+        # Set locale for i18n translations
+        i18n.current_locale = locale
 
         await message.answer(
             f'{_("Assalomu alaykum")}, {full_name}\n\n{_("Bizning botga hush kelibsiz")}',
             reply_markup=main_button()
         )
     else:
+        # If not subscribed, show a message with subscription links
         markup = await get_subscription_check_markup(user_id, bot)
-        await message.answer(_("Assalomu alaykum ! Obuna bo'ling : "), reply_markup=markup)
+        if markup:
+            await message.answer(_("Assalomu alaykum ! Obuna bo'ling : "), reply_markup=markup)
 
         await state.set_state('awaiting_subscription')
 
-    # Ensure the default locale is set to 'uz' if the state does not contain a locale
+    # Ensure locale is set correctly in state and i18n
     try:
         data = await state.get_data()
-        locale = data.get('locale', 'uz')  # Default to 'uz' if no locale is found
+        locale = data.get('locale', 'uz')
+        i18n.current_locale = locale
         print(f"Locale for user {user_id}: {locale}")
     except Exception as e:
         print(f'Error fetching locale: {e}')
         locale = 'uz'
 
-    # Update the state and apply locale
     await state.update_data({'locale': locale})
-
-    # Ensure that i18n uses the correct locale for translations
-    # This assumes you're using aiogram's i18n system for translation handling
-    i18n.current_locale = locale  # Set the locale for i18n translations
-
